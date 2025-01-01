@@ -1,0 +1,65 @@
+.form-bg {
+  background: var(--background-color);
+  /*background: radial-gradient(circle, white, #333333);*/
+  height: 100vh; /* Make sure it covers the full height of the screen */
+  margin: 0; /* Remove default margin */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wrapper {
+  background-color: rgba(
+    39,
+    241,
+    255,
+    0.2
+  ); /* Translucent background with opacity */
+  border-radius: 1rem; /* Rounded corners */
+  padding: 1rem;
+  width: 40vh;
+  height: 40vh;
+
+  animation: fadeIn 0.5s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wrapper form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wrapper input {
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1rem;
+  padding: 0.5rem;
+}
+
+.wrapper button {
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1rem;
+  padding: 0.5rem;
+}
+
+.wrapper button:hover {
+  background-color: rgb(220, 220, 220);
+}
+
+.option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-text {
+  padding-right: 0.25rem;
+}

@@ -1,0 +1,47 @@
+.home-container {
+  animation: fadeIn 0.5s ease-in;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 80vh;
+}
+
+.hero-section {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero-section button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--button-color-2);
+  color: white;
+}
+
+.hero-section button:hover {
+  background-color: var(--button-hover-color-2);
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 0;
+}
+
+.feature-list {
+  width: 20%;
+  text-align: center;
+  /*
+  border: 0.1rem solid;
+  border-color: black;
+  border-radius: 0.5rem;
+  */
+}

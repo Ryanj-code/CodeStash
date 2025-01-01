@@ -1,0 +1,10 @@
+* {
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color-2);
+  margin: 0;
+  padding: 0;
+}
