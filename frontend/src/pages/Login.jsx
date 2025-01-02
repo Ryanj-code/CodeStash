@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../UserContext";
+import axios from "axios";
+import "./Form.css";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -8,19 +10,34 @@ const Login = () => {
     password: "",
   });
 
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  useEffect(() => {
+    if (user) {
+      navigate("/library");
+    }
+  }, [user]);
+
+  const handleChange = (ev) => {
     setData({
       ...data, // Spread the current state
-      [e.target.name]: e.target.value, // Update only the modified field
+      [ev.target.name]: ev.target.value, // Update only the modified field
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Submitting form with", data); // Log the current state
-    navigate("/");
+  const handleLogin = async (ev) => {
+    ev.preventDefault();
+    console.log("Login with", data); // Log the current state
+
+    try {
+      const res = await axios.post("/login", data);
+      setUser(res.data);
+      console.log("Login successful.");
+      navigate("/");
+    } catch (err) {
+      console.log("Login failed.", err);
+    }
   };
 
   return (
@@ -35,7 +52,7 @@ const Login = () => {
       */}
       <div className="wrapper">
         <p>Login</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleLogin}>
           <input
             type="email"
             name="email"
@@ -50,14 +67,15 @@ const Login = () => {
             value={data.password}
             onChange={handleChange}
             placeholder="Password"
-            autoComplete="current-password" // Suggest current password
+            autoComplete="password" // Suggest current password
           />
           <button type="submit">Login</button>
         </form>
-        <div className="option">
-          <p className="option-text">Don't have an account?</p>
+        <div className="alt-option">
+          <p className="alt-option-text">Don't have an account?</p>
           <Link to="/signup">Sign up here</Link>
         </div>
+        <Link to="/">Home</Link>
       </div>
     </div>
   );

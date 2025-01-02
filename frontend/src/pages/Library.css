@@ -22,7 +22,7 @@
   width: 100%; /* Allow the grid to span the full container width */
   max-width: 100rem; /* Optional: Limit the max width for better visuals */
   margin: 2rem; /* Center the grid within the container */
-  padding: 0.5rem; /* Add padding around the grid for spacing */
+  padding: 0.5rem;
   box-sizing: border-box; /* Ensure padding doesn't break the grid layout */
   justify-items: center; /* Ensures the grid items are centered within their columns */
 }

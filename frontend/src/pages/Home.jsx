@@ -11,7 +11,7 @@ const Home = () => {
       <div className="home-container">
         <div className="hero-section">
           <p>Manage your Code Snippets with CodeStash.</p>
-          <button onClick={() => navigate("/login")}>Get Started</button>
+          <button onClick={() => navigate("/signup")}>Get Started</button>
         </div>
         <div className="features">
           <div className="feature-list">

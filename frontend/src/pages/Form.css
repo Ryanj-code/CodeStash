@@ -19,7 +19,7 @@
   border-radius: 1rem; /* Rounded corners */
   padding: 1rem;
   width: 40vh;
-  height: 40vh;
+  height: 45vh;
 
   animation: fadeIn 0.5s ease-in;
   display: flex;
@@ -54,12 +54,12 @@
   background-color: rgb(220, 220, 220);
 }
 
-.option {
+.alt-option {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.option-text {
+.alt-option-text {
   padding-right: 0.25rem;
 }

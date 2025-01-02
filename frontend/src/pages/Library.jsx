@@ -1,64 +1,43 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../UserContext";
 import Navbar from "../components/Navbar";
+import axios from "axios";
 import "./Library.css";
 
 const Library = () => {
-  const mockSnippets = [
-    {
-      id: 1,
-      title: "Bubble Sort Algorithm",
-      language: "Python",
-      tags: ["sorting", "arrays"],
-      preview: "# Bubble Sort in Python...\ndef bubbleSort(arr):...",
-    },
-    {
-      id: 2,
-      title: "React useState Example",
-      language: "JavaScript",
-      tags: ["react", "hooks"],
-      preview: "// React useState Example\nimport React, { useState }...",
-    },
-    {
-      id: 3,
-      title: "Prime Number Check",
-      language: "Java",
-      tags: ["math", "algorithms"],
-      preview:
-        "// Check for Prime Number in Java\npublic boolean isPrime(int n) {...",
-    },
-    {
-      id: 4,
-      title: "Merge Sort Algorithm",
-      language: "C++",
-      tags: ["sorting", "divide-and-conquer"],
-      preview:
-        "// Merge Sort Implementation\nvoid mergeSort(int arr[], int l, int r)...",
-    },
-    {
-      id: 5,
-      title: "CSS Flexbox Cheat Sheet",
-      language: "CSS",
-      tags: ["css", "layout"],
-      preview:
-        "/* Center elements with Flexbox */\n.container { display: flex; ... }",
-    },
-    {
-      id: 6,
-      title: "Python Flask API Example",
-      language: "Python",
-      tags: ["web", "flask", "api"],
-      preview:
-        "# Basic Flask API Example\nfrom flask import Flask\napp = Flask(__name__)\n...",
-    },
-    {
-      id: 7,
-      title: "SQL Inner Join Example",
-      language: "SQL",
-      tags: ["database", "query"],
-      preview:
-        "-- SQL Inner Join Query\nSELECT * FROM table1\nINNER JOIN table2 ON table1.id = table2.id;",
-    },
-  ];
+  const { user, setUser } = useContext(UserContext);
+  const [snippets, setSnippets] = useState([]); // State to hold the snippets
+
+  // Fetch the user id again when the component mounts
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const { data } = await axios.get("/profile");
+        setUser(data);
+        // console.log("User data fetched:", data);
+      } catch (err) {
+        console.error("Error fetching user profile:", err.message, err);
+      }
+    };
+    fetchUser();
+  }, [setUser]);
+
+  useEffect(() => {
+    if (user && user.id) {
+      //fetchSnippets(user.id);
+      console.log("Got ID");
+    }
+  }, [user]);
+
+  const fetchSnippets = async (userID, search, language, tags) => {
+    console.log("Fetching");
+  };
+
+  // Handle search functionality (optional)
+  const handleSearch = (e) => {
+    // Logic for search can be added here
+    console.log("Search query:", e.target.value);
+  };
 
   return (
     <div>
@@ -66,7 +45,11 @@ const Library = () => {
       <div className="library-container">
         <header>
           <div className="search-bar">
-            <input type="text" placeholder="Search Snippets..." />
+            <input
+              type="text"
+              placeholder="Search Snippets..."
+              onChange={handleSearch}
+            />
             <button>Search</button>
           </div>
           <button className="add-snippet">Add Snippet</button>
@@ -84,10 +67,10 @@ const Library = () => {
             <option>Oldest</option>
           </select>
         </div>
-        <div className="snippet-grid">
-          {mockSnippets.length > 0 ? (
-            mockSnippets.map((snippet) => (
-              <div className="snippet-card" key={snippet.id}>
+        {snippets.length > 0 ? (
+          <div className="snippet-grid">
+            {snippets.map((snippet) => (
+              <div className="snippet-card" key={snippet._id}>
                 <div className="snippet-card-title">{snippet.title}</div>
                 <span className="language">Language: {snippet.language}</span>
                 <span className="tags">
@@ -99,16 +82,16 @@ const Library = () => {
                   <button>Delete</button>
                 </div>
               </div>
-            ))
-          ) : (
-            <div className="empty-state">
-              <p>
-                You don't have any snippets yet.{" "}
-                <a href="/add">Add your first one!</a>
-              </p>
-            </div>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="empty-state">
+            <p>
+              You don't have any snippets yet.{" "}
+              <a href="/add">Add your first one!</a>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
