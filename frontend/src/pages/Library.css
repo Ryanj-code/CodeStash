@@ -1,0 +1,60 @@
+.library-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.library-container header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.snippet-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(30rem, 1fr)
+  ); /* Automatically adjusts column count */
+  gap: 1.5rem; /* Space between grid items */
+  width: 100%; /* Allow the grid to span the full container width */
+  max-width: 100rem; /* Optional: Limit the max width for better visuals */
+  margin: 2rem; /* Center the grid within the container */
+  padding: 0.5rem; /* Add padding around the grid for spacing */
+  box-sizing: border-box; /* Ensure padding doesn't break the grid layout */
+  justify-items: center; /* Ensures the grid items are centered within their columns */
+}
+
+.snippet-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  height: 15rem;
+  max-width: 20rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.snippet-preview {
+  text-align: center;
+}
+
+.snippet-card button {
+  margin: 0 0.25rem;
+  padding: 0.25rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--button-color-2);
+  color: white;
+}
+
+.snippet-card button:hover {
+  background-color: var(--button-hover-color-2);
+}
