@@ -61,6 +61,7 @@ const Login = () => {
             placeholder="Email"
             autoComplete="email" // Suggest email address
           />
+
           <input
             type="password"
             name="password"
@@ -69,6 +70,7 @@ const Login = () => {
             placeholder="Password"
             autoComplete="password" // Suggest current password
           />
+
           <button type="submit">Login</button>
         </form>
         <div className="alt-option">

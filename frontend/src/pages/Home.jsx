@@ -1,10 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useContext } from "react";
+import { UserContext } from "../UserContext";
 import Navbar from "../components/Navbar";
 import "./Home.css";
 
 const Home = () => {
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate(`/library`);
+    }
+  }, [user]);
+
   return (
     <div>
       <Navbar />

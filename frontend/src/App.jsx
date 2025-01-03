@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Library from "./pages/Library";
 import AddSnippet from "./pages/AddSnippet";
+import EditSnippet from "./pages/EditSnippet";
 import axios from "axios";
 import "./App.css";
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/library" element={<Library />} />
           <Route path="/add" element={<AddSnippet />} />
+          <Route path="/edit/:snippetid" element={<EditSnippet />} />
         </Routes>
       </Router>
     </UserContextProvider>

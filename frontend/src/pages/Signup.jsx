@@ -54,6 +54,7 @@ const Signup = () => {
             placeholder="Email"
             autoComplete="email" // Suggest email address
           />
+
           <input
             type="text"
             name="name"
@@ -62,6 +63,7 @@ const Signup = () => {
             placeholder="Username"
             autoComplete="username" // Suggest username
           />
+
           <input
             type="password"
             name="password"

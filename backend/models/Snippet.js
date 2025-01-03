@@ -5,17 +5,17 @@ const SnippetSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  code: {
+  content: {
     type: String,
     required: true, // The actual code or snippet content
-  },
-  tags: {
-    type: [String], // Array of tags (e.g., ["JavaScript", "React", "Array"])
-    default: [], // Default empty array if no tags are provided
   },
   language: {
     type: String, // Language of the code (e.g., "JavaScript", "Python")
     required: true,
+  },
+  tags: {
+    type: [String], // Array of tags (e.g., ["JavaScript", "React", "Array"])
+    default: [], // Default empty array if no tags are provided
   },
   notes: {
     type: String, // Optional notes field for extra info

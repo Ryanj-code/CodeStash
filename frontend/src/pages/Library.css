@@ -29,23 +29,53 @@
 
 .snippet-card {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   background-color: #f9f9f9;
   padding: 0.5rem;
   border-radius: 2rem;
-  height: 15rem;
-  max-width: 20rem;
+  width: 25vw; /* Set a fixed width for the cards */
+  height: 40vh; /* Set a fixed height for the cards */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.snippet-preview {
+.snippet-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.snippet-card-title {
+  display: inline;
+  font-size: 1.5rem;
+  font-weight: bold;
   text-align: center;
 }
 
+.language {
+  font-size: 1rem;
+  text-align: center;
+  padding-left: 0.25rem;
+}
+
+.tags {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.snippet-preview {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: center;
+  padding: 0.5rem;
+}
+
 .snippet-card button {
-  margin: 0 0.25rem;
+  margin: 0.5rem;
   padding: 0.25rem 1rem;
   font-size: 0.85rem;
   cursor: pointer;
@@ -57,4 +87,12 @@
 
 .snippet-card button:hover {
   background-color: var(--button-hover-color-2);
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15rem;
 }

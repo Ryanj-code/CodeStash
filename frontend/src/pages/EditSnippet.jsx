@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../UserContext";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Editor from "@monaco-editor/react"; // Using monaco editor for code editor
 import axios from "axios";
 import Navbar from "../components/Navbar";
-import "./AddSnippet.css";
+import "./EditSnippet.css";
 
-const AddSnippet = () => {
+const EditSnippet = () => {
+  const { snippetid } = useParams(); // Get the snippet ID from the URL
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -20,6 +21,20 @@ const AddSnippet = () => {
   const [tagInput, setTagInput] = useState("");
   const [editorHeight, setEditorHeight] = useState("");
   const [editorWidth, setEditorWidth] = useState("");
+
+  // Fetch snippet data when the component mounts
+  useEffect(() => {
+    const fetchSnippet = async () => {
+      // console.log("Snippet id:", snippetid);
+      try {
+        const res = await axios.get(`/getsnippet/${snippetid}`); // Fetch snippet by ID
+        setSnippetData(res.data); // Set the fetched data to state
+      } catch (err) {
+        console.error("Error fetching snippet:", err);
+      }
+    };
+    fetchSnippet();
+  }, [snippetid]); // Re-fetch if the snippet ID changes
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,20 +78,16 @@ const AddSnippet = () => {
     // Removes only the tag that was clicked
   };
 
-  const handleAddSnippet = async (ev) => {
+  const handleEditSnippet = async (ev) => {
     ev.preventDefault();
-    console.log(user.id);
 
     try {
-      const data = {
-        snippetData,
-        userID: user.id,
-      };
-      const res = await axios.post("/addsnippet", data);
-      console.log("Snippet added successfully:", res.data);
+      //console.log(data);
+      const res = await axios.post(`/editsnippet/${snippetid}`, snippetData);
+      console.log("Snippet edited successfully:", res.data);
       navigate("/library");
     } catch (err) {
-      console.error("Error adding snippet:", err);
+      console.error("Error editing snippet:", err);
     }
   };
 
@@ -85,7 +96,7 @@ const AddSnippet = () => {
       <Navbar />
       <div className="add-snippet-container">
         <h3>Create Snippet</h3>
-        <form onSubmit={handleAddSnippet}>
+        <form onSubmit={handleEditSnippet}>
           <div className="form-row">
             <div className="snippet-title-container form-group">
               <label htmlFor="title">Snippet Title:</label>
@@ -173,7 +184,7 @@ const AddSnippet = () => {
           </div>
 
           <div className="submit-button">
-            <button type="submit">Create Snippet</button>
+            <button type="submit">Save Snippet</button>
           </div>
         </form>
       </div>
@@ -181,4 +192,4 @@ const AddSnippet = () => {
   );
 };
 
-export default AddSnippet;
+export default EditSnippet;

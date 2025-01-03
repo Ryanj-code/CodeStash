@@ -155,10 +155,10 @@ app.post("/logout", (req, res) => {
     .json({ message: "Logged out successfully" });
 });
 
-app.get("/library/:userId", async (req, res) => {
+app.get("/getlibrary/:userId", async (req, res) => {
   try {
-    const userId = req.params.userId;
-    const userLibrary = await Library.findOne({ userId }).populate("snippets"); // Populate snippets for the user
+    const userId = req.params.userId; // Extract userId from the URL parameter
+    const userLibrary = await Library.findOne({ userId }).populate("snippets");
     if (!userLibrary) {
       return res.status(404).json({ message: "Library not found" });
     }
@@ -166,6 +166,103 @@ app.get("/library/:userId", async (req, res) => {
   } catch (err) {
     console.error("Error fetching library:", err);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.post("/addsnippet", async (req, res) => {
+  try {
+    const { snippetData, userID } = req.body;
+    const { title, content, language, tags, notes } = snippetData;
+
+    if (!title || !content || !language || !userID) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    const snippetDoc = await Snippet.create({
+      title,
+      content,
+      language,
+      tags,
+      notes: notes || "",
+      createdAt: Date.now(),
+    });
+
+    let userLibrary = await Library.findOne({ userId: userID });
+    userLibrary.snippets.push(snippetDoc._id);
+    await userLibrary.save();
+
+    console.log(userLibrary);
+
+    res.status(201).json({
+      message: "Snippet created and added to user library",
+      snippet: snippetDoc,
+    });
+  } catch (err) {
+    console.error("Error creating snippet:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+app.post("/editsnippet/:snippetId", async (req, res) => {
+  try {
+    const { snippetId } = req.params;
+    const { title, content, language, tags, notes } = req.body;
+
+    const updatedSnippetDoc = {
+      title,
+      content,
+      language,
+      tags,
+      notes,
+      createdAt: Date.now(),
+    };
+
+    // console.log(updatedSnippetDoc);
+    // Update the snippet in the database
+    const updatedSnippet = await Snippet.findByIdAndUpdate(
+      snippetId,
+      updatedSnippetDoc,
+      {
+        new: true, // Return the updated document
+      }
+    );
+
+    if (!updatedSnippet) {
+      return res.status(404).json({ message: "Snippet not found" });
+    }
+    res.json(updatedSnippet);
+  } catch (err) {
+    console.error("Error updating snippet:", err);
+    res.status(500).json({ message: "Server error" }); // Send error response if something goes wrong
+  }
+});
+
+app.get("/getsnippet/:snippetId", async (req, res) => {
+  try {
+    const { snippetId } = req.params;
+    // console.log("Received snippetId:", snippetId); // Check for snippetId in the console
+    const snippetDoc = await Snippet.findById(snippetId);
+    res.json(snippetDoc);
+  } catch (err) {
+    console.error(err); // Log the error
+    res.status(500).json({ message: "Server error" }); // Send an error response
+  }
+});
+
+app.delete("/deleteSnippet/:snippetId", async (req, res) => {
+  try {
+    const { snippetId } = req.params;
+
+    // Find and delete the snippet by its ID
+    const deletedSnippet = await Snippet.findByIdAndDelete(snippetId);
+    if (!deletedSnippet) {
+      return res.status(404).json({ message: "Snippet not found" });
+    }
+
+    res.status(200).json({ message: "Snippet deleted successfully" });
+  } catch (err) {
+    console.error(err); // Log the error
+    res.status(500).json({ message: "Server error" }); // Send an error response
   }
 });
 
