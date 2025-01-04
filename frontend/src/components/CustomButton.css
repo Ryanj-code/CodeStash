@@ -1,0 +1,15 @@
+.custom-button {
+  color: var(--text-color-default);
+  background-color: var(--button-color);
+  margin: 0.5rem;
+  padding: 0.25rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+}
+
+.custom-button:hover {
+  background-color: var(--button-hover-color);
+}

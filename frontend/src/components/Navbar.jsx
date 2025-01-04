@@ -11,10 +11,9 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      // You can also handle logout logic here, for example, clearing cookies, etc.
-      await axios.post("/logout"); // Assuming you have a backend route for logging out
+      await axios.post("/logout");
       setUser(null); // Clear the user from context after logout
-      navigate("/"); // Redirect to the login page
+      navigate("/");
     } catch (error) {
       console.error("Logout failed:", error);
     }

@@ -1,0 +1,100 @@
+.snippet-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.snippet-form-container label {
+  display: block;
+  font-weight: bold;
+}
+
+.tag-container-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tag-container-2 input {
+  width: 100%;
+}
+
+.tags-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: #007bff;
+  color: white;
+  padding: 0.35rem;
+  border-radius: 1rem;
+  padding-left: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.remove-tag {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin-left: 0.25rem;
+  cursor: pointer;
+}
+
+.remove-tag:hover {
+  color: #ff6b6b;
+}
+
+.snippet-form-container [type="text"] {
+  text-indent: 0.25rem; /* Moves the first line of text to the right */
+  padding: 0.25rem;
+  border-radius: 2.5rem;
+  border: 0.05rem solid #ddd;
+  width: 100%;
+  font-size: 1rem; /* Font size in rem */
+}
+
+.language-container select {
+  width: 100%;
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+/* Flexbox container for the title and language */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem; /* 20px to 1.25rem */
+  margin-bottom: 0.5rem; /* 15px to 1rem */
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+}
+
+.submit-button {
+  text-align: center; /* Horizontally centers the button */
+}
+
+.submit-button button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem; /* Ensure button text scales */
+  border: none;
+  border-radius: 0.5rem; /* Rounded corners */
+  background-color: var(--button-color);
+  color: white;
+  cursor: pointer;
+}
+
+.submit-button button:hover {
+  background-color: var(--button-hover-color); /* Darker blue on hover */
+}

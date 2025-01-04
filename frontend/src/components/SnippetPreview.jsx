@@ -1,7 +1,7 @@
 import React from "react";
 
 const SnippetPreview = ({ content }) => {
-  const previewLines = 1; // Set the number of lines you want to show
+  const previewLines = 1; // Set the number of preview lines
 
   const previewContent = content.split("\n").slice(0, previewLines).join("\n");
 
