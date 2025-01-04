@@ -5,11 +5,29 @@
   align-items: center;
 }
 
-.library-container header {
+.library-header {
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.search-bar {
+  display: flex; /* Aligns items horizontally */
+  align-items: center; /* Vertically centers items */
+  background-color: var(--container-color); /* Light gray background */
+  border-radius: 1rem; /* Rounded corners */
+  padding: 0.25rem; /* Space inside the container */
+  width: 20vw; /* Adjust width as needed */
+  gap: 0.5rem; /* Adds spacing between elements */
+  width: 75%; /* Ensure it's responsive */
+}
+
+.search-bar input {
+  border: none; /* Removes default border */
+  outline: none; /* Removes outline on focus */
+  font-size: 1rem; /* Adjust font size */
+  flex: 1; /* Makes input take up the remaining space */
+  background: transparent; /* Matches the background */
 }
 
 .snippet-grid {
@@ -46,6 +64,25 @@
   align-items: center;
   text-align: center;
   margin-bottom: 1rem;
+}
+
+.snippet-card-header-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+.snippet-card-link {
+  display: inline-block;
+  font-size: 1rem; /* Change this value as needed */
+  cursor: pointer;
+  color: inherit; /* Keep the color consistent with the rest of the text */
+}
+
+.snippet-card-link:hover {
+  color: #007bff; /* Change to the desired hover color */
 }
 
 .snippet-card-title {
@@ -87,6 +124,82 @@
 
 .snippet-card button:hover {
   background-color: var(--button-hover-color-2);
+}
+
+.delete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.delete-modal-content {
+  background: var(--background-color);
+  color: var(--text-color-2);
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  width: 20rem;
+}
+
+.delete-modal button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.filter-modal {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.filters {
+  display: flex;
+  align-items: center; /* Vertically center */
+  justify-content: space-evenly; /* Horizontally center */
+  flex-direction: column;
+  background: var(--background-color);
+  color: var(--text-color-2);
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  height: 40%; /* Make height 100% of the parent */
+  width: 30%; /* Make width 100% of the parent */
+}
+
+.filter-options {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.filter-language,
+.filter-time {
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  height: 50vh; /* Optional, to take full viewport height */
 }
 
 .empty-state {

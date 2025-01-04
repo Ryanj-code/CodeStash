@@ -159,6 +159,7 @@ app.get("/getlibrary/:userId", async (req, res) => {
   try {
     const userId = req.params.userId; // Extract userId from the URL parameter
     const userLibrary = await Library.findOne({ userId }).populate("snippets");
+    // Finds library associated with userId and populates snippets with the snippets from the library
     if (!userLibrary) {
       return res.status(404).json({ message: "Library not found" });
     }
@@ -191,7 +192,7 @@ app.post("/addsnippet", async (req, res) => {
     userLibrary.snippets.push(snippetDoc._id);
     await userLibrary.save();
 
-    console.log(userLibrary);
+    // console.log(userLibrary);
 
     res.status(201).json({
       message: "Snippet created and added to user library",

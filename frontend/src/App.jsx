@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Library from "./pages/Library";
 import AddSnippet from "./pages/AddSnippet";
 import EditSnippet from "./pages/EditSnippet";
+import SnippetDetail from "./pages/SnippetDetail";
 import axios from "axios";
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/library" element={<Library />} />
           <Route path="/add" element={<AddSnippet />} />
           <Route path="/edit/:snippetid" element={<EditSnippet />} />
+          <Route path="/snippet/:snippetid" element={<SnippetDetail />} />
         </Routes>
       </Router>
     </UserContextProvider>

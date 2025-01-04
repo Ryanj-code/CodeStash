@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useContext } from "react";
 import { UserContext } from "../UserContext";
 import Navbar from "../components/Navbar";
 import "./Home.css";
