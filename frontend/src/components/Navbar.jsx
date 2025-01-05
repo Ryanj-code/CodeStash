@@ -28,16 +28,14 @@ const Navbar = () => {
         <div>CodeStash</div>
       </div>
       <div className="right-section">
-        <div>
-          {user ? (
-            <button onClick={handleLogout}>Log Out</button>
-          ) : (
-            <>
-              <button onClick={() => navigate("/signup")}>Sign Up</button>
-              <button onClick={() => navigate("/login")}>Log In</button>
-            </>
-          )}
-        </div>
+        {user ? (
+          <button onClick={handleLogout}>Log Out</button>
+        ) : (
+          <div className="button-container">
+            <button onClick={() => navigate("/signup")}>Sign Up</button>
+            <button onClick={() => navigate("/login")}>Log In</button>
+          </div>
+        )}
       </div>
     </div>
   );

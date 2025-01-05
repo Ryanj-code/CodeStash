@@ -1,9 +1,11 @@
 /* Theme Variables */
 :root {
   /* Background Colors */
+  --background-color-default: white;
   --background-color: #cdcdcd;
   --background-color-2: #c0c0c0;
   --container-color: white;
+  --container-color-2: rgb(243, 243, 243);
   --border-color: #333;
 
   /* Text Colors */
@@ -60,5 +62,21 @@ body.dark-theme {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
   }
 }

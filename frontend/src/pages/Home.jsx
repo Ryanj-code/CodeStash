@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import Navbar from "../components/Navbar";
+import IconSelector from "../components/IconSelector";
 import "./Home.css";
 
 const Home = () => {
@@ -14,34 +15,55 @@ const Home = () => {
     }
   }, [user]);
 
+  const scrollDown = () => {
+    const contentSection = document.getElementById("features"); // ID of the section you want to scroll to
+    if (contentSection) {
+      contentSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div>
       <Navbar />
       <div className="home-container">
         <div className="hero-section">
-          <p>Manage your Code Snippets with CodeStash.</p>
-          <button onClick={() => navigate("/signup")}>Get Started</button>
+          <h1 className="hero-title">
+            Your Personal Code Library,{" "}
+            <span style={{ color: "#22c55e" }}>Organized</span>
+          </h1>
+          <p className="hero-subtitle">
+            Store and retrieve your code snippets efficiently. Never lose that
+            useful piece of code again.
+          </p>
+          <div className="hero-actions">
+            <button onClick={() => navigate("/signup")}>Get Started</button>
+          </div>
         </div>
-        <div className="features">
+
+        <div className="scroll-down">
+          <IconSelector iconType={6} onClick={scrollDown} color="green" />
+        </div>
+
+        <div className="features" id="features">
+          <h2>Everything You Need to Manage Your Code Snippets</h2>
           <div className="feature-list">
+            <IconSelector iconType={3} color="green" />
             <h3>Simple to Use</h3>
             <p>
-              Easily add and edit your code snippets through an intuitive
-              interface.
+              Intuitive interface for adding and editing snippets. Syntax
+              highlighting for programming languages.
             </p>
           </div>
           <div className="feature-list">
+            <IconSelector iconType={1} color="green" />
             <h3>Filtering</h3>
-            <p>
-              Search and filter your code snippets using tags that you set up.
-            </p>
+            Find your code snippets instantly with powerful search and filters.
+            Tag system for easy organization and retrieval.
           </div>
           <div className="feature-list">
+            <IconSelector iconType={5} color="green" />
             <h3>Detailed View</h3>
-            <p>
-              Look at your snippets with the syntax highlighted and add notes to
-              them.
-            </p>
+            Add notes, descriptions, and usage examples to your snippets.
           </div>
         </div>
       </div>

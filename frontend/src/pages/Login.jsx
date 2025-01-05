@@ -1,40 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
+import AuthForm from "../components/AuthForm"; // Assuming AuthForm is reusable
 import axios from "axios";
-import "./Form.css";
 
 const Login = () => {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
-
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (user) {
-      navigate("/library");
-    }
-  }, [user]);
-
-  const handleChange = (ev) => {
-    setData({
-      ...data, // Spread the current state
-      [ev.target.name]: ev.target.value, // Update only the modified field
-    });
-  };
-
-  const handleLogin = async (ev) => {
+  const handleLogin = async (ev, data) => {
     ev.preventDefault();
-    console.log("Login with", data); // Log the current state
+    // console.log("Login with", data);
 
     try {
       const res = await axios.post("/login", data);
       setUser(res.data);
-      console.log("Login successful.");
-      navigate("/");
+      navigate("/library");
     } catch (err) {
       console.log("Login failed.", err);
     }
@@ -42,37 +23,14 @@ const Login = () => {
 
   return (
     <div className="form-bg">
-      {/*
-      <div className="form-header" onClick={() => navigate("/")}>
-        <div>
-          <img src="/icon.png" alt="Website Icon" className="website-icon" />
-        </div>
-        <div>CodeStash</div>
-      </div>
-      */}
       <div className="wrapper">
-        <p>Login</p>
-        <form onSubmit={handleLogin}>
-          <input
-            type="email"
-            name="email"
-            value={data.email}
-            onChange={handleChange}
-            placeholder="Email"
-            autoComplete="email" // Suggest email address
-          />
-
-          <input
-            type="password"
-            name="password"
-            value={data.password}
-            onChange={handleChange}
-            placeholder="Password"
-            autoComplete="password" // Suggest current password
-          />
-
-          <button type="submit">Login</button>
-        </form>
+        <h2>Login</h2>
+        <AuthForm
+          user={user}
+          handleSubmit={handleLogin}
+          buttonText="Login"
+          isSignup={false}
+        />
         <div className="alt-option">
           <p className="alt-option-text">Don't have an account?</p>
           <Link to="/signup">Sign up here</Link>

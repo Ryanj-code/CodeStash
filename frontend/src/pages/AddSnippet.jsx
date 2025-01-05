@@ -15,7 +15,7 @@ const AddSnippet = () => {
         snippetData,
         userID: user.id,
       };
-      await axios.post("/addsnippet", data);
+      await axios.post("/add-snippet", data);
       navigate("/library");
     } catch (err) {
       console.error("Error adding snippet:", err);
@@ -35,7 +35,7 @@ const AddSnippet = () => {
         }}
         onSubmit={handleAddSnippet}
         heading="Create Snippet"
-        submitButtonText="Add Snippet"
+        submitButtonText="Create Snippet"
       />
     </div>
   );

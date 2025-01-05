@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import Navbar from "../components/Navbar";
 import SnippetPreview from "../components/SnippetPreview";
-import IconSelector from "../components/IconSelector";
 import CustomButton from "../components/CustomButton";
+import IconSelector from "../components/IconSelector";
 import axios from "axios";
 import "./Library.css";
 
@@ -18,10 +18,9 @@ const Library = () => {
   const [deleteID, setDeleteID] = useState(null); // State for snippetId to be deleted
   const [filterModal, setFilterModal] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(""); // Language filter
-  const [selectedSort, setSelectedSort] = useState("Newest"); // Sort by time filter
+  const [selectedSort, setSelectedSort] = useState("Newest"); // Time filter
   const navigate = useNavigate();
 
-  // Fetch the user id when the component mounts
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -41,9 +40,9 @@ const Library = () => {
   }, [user]);
 
   const fetchSnippets = async () => {
-    //console.log("Fetching");
+    //console.log(user.id);
     try {
-      const res = await axios.get(`/getlibrary/${user.id}`);
+      const res = await axios.get(`/get-library/${user.id}`);
       setAllSnippets(res.data.snippets); // Saves 2 copies of all snippets
       setSnippets(res.data.snippets);
       // console.log(res.data); // Log user snippets
@@ -93,7 +92,7 @@ const Library = () => {
   }, [searchQuery, selectedLanguage, selectedSort]);
 
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value); // Update the search query on every keystroke
+    setSearchQuery(e.target.value);
   };
 
   const handleLanguageChange = (e) => {
@@ -124,7 +123,9 @@ const Library = () => {
     // After user confirms delete snippet
     if (deleteID) {
       try {
-        await axios.delete(`/deletesnippet/${deleteID}`);
+        await axios.delete(`/delete-snippet/${deleteID}`, {
+          data: { userID: user.id }, // Send user.id as part of the request body
+        });
         fetchSnippets();
       } catch (err) {
         console.error("Error deleting snippet:", err);
@@ -139,7 +140,7 @@ const Library = () => {
     setFilterModal(true);
   };
 
-  const handleCancelFilter = () => {
+  const handleFilterDone = () => {
     setFilterModal(false);
   };
 
@@ -164,10 +165,6 @@ const Library = () => {
             />
           </div>
         </div>
-
-        {/*
-        
-        */}
 
         {deleteModal && (
           <div className="delete-modal">
@@ -211,7 +208,7 @@ const Library = () => {
                   </select>
                 </div>
               </div>
-              <CustomButton label="Done" onClick={handleCancelFilter} />
+              <CustomButton label="Done" onClick={handleFilterDone} />
             </div>
           </div>
         )}
@@ -234,7 +231,7 @@ const Library = () => {
                         className="snippet-card-link"
                         onClick={() => navigate(`/snippet/${snippet._id}`)}
                       >
-                        Details
+                        <IconSelector iconType={5} />
                       </a>
                     </div>
                     <span className="language">
@@ -266,7 +263,6 @@ const Library = () => {
             <p>
               You don't have any snippets yet.{" "}
               <a href="/add">Add your first one!</a>
-              <CustomButton label="Add" onClick={() => navigate("/add")} />
             </p>
           </div>
         )}

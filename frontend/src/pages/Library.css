@@ -20,6 +20,8 @@
   width: 20vw; /* Adjust width as needed */
   gap: 0.5rem; /* Adds spacing between elements */
   width: 75%; /* Ensure it's responsive */
+  border: solid 0.01rem;
+  border-color: rgba(0, 0, 0, 0.2); /* Black border with transparency */
 }
 
 .search-bar input {
@@ -31,6 +33,7 @@
 }
 
 .snippet-grid {
+  animation: fadeIn 0.5s ease-in;
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
@@ -82,7 +85,7 @@
 }
 
 .snippet-card-link:hover {
-  color: #007bff; /* Change to the desired hover color */
+  color: var(--button-hover-color-2);
 }
 
 .snippet-card-title {

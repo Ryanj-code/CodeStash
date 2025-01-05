@@ -1,26 +1,25 @@
 .form-bg {
-  background: var(--background-color);
-  /*background: radial-gradient(circle, white, #333333);*/
-  height: 100vh; /* Make sure it covers the full height of the screen */
-  margin: 0; /* Remove default margin */
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3e2c8 100%);
+  min-height: 100vh;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .wrapper {
-  background-color: rgba(
-    39,
-    241,
-    255,
-    0.2
-  ); /* Translucent background with opacity */
-  border-radius: 1rem; /* Rounded corners */
-  padding: 1rem;
-  width: 40vh;
-  height: 45vh;
-
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  min-height: 450px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
   animation: fadeIn 0.5s ease-in;
   display: flex;
   justify-content: center;
@@ -30,36 +29,77 @@
 
 .wrapper form {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.2rem;
+  width: 100%;
 }
 
 .wrapper input {
   font-size: 1rem;
-  border-radius: 0.5rem;
-  border: 1rem;
-  padding: 0.5rem;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.wrapper input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .wrapper button {
   cursor: pointer;
   font-size: 1rem;
-  border-radius: 0.5rem;
-  border: 1rem;
-  padding: 0.5rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  padding: 0.8rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  width: 100%;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
 }
 
 .wrapper button:hover {
-  background-color: rgb(220, 220, 220);
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.wrapper button:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .alt-option {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #64748b;
 }
 
-.alt-option-text {
-  padding-right: 0.25rem;
+.alt-option a {
+  color: var(--button-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.alt-option a:hover {
+  color: var(--button-hover-color);
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 2rem 1.5rem;
+    width: 90%;
+  }
 }

@@ -12,7 +12,7 @@ const EditSnippet = () => {
   useEffect(() => {
     const fetchSnippet = async () => {
       try {
-        const res = await axios.get(`/getsnippet/${snippetid}`);
+        const res = await axios.get(`/get-snippet/${snippetid}`);
         setInitialData(res.data);
       } catch (err) {
         console.error("Error fetching snippet:", err);
@@ -23,7 +23,7 @@ const EditSnippet = () => {
 
   const handleEditSnippet = async (snippetData) => {
     try {
-      await axios.post(`/editsnippet/${snippetid}`, snippetData);
+      await axios.post(`/edit-snippet/${snippetid}`, snippetData);
       navigate("/library");
     } catch (err) {
       console.error("Error editing snippet:", err);

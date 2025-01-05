@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "./CustomButton";
+import IconSelector from "./IconSelector";
 import Editor from "@monaco-editor/react"; // Using monaco editor for code editor
 import "./SnippetForm.css";
 
@@ -18,8 +19,8 @@ const SnippetForm = ({
 
   useEffect(() => {
     const handleResize = () => {
-      setEditorHeight(`${window.innerHeight * 0.45}px`);
-      setEditorWidth(`${window.innerWidth * 0.5}px`);
+      setEditorHeight(`${window.innerHeight * 0.5}px`);
+      setEditorWidth(`${window.innerWidth * 0.8}px`);
     };
     window.addEventListener("resize", handleResize);
     handleResize(); // Initial call
@@ -96,8 +97,7 @@ const SnippetForm = ({
           </div>
         </div>
 
-        <div className="code-area-container form-group">
-          <label htmlFor="content">Code:</label>
+        <div className="editor-container form-group">
           <Editor
             width={editorWidth}
             height={editorHeight}
@@ -105,6 +105,10 @@ const SnippetForm = ({
             value={snippetData.content}
             onChange={(value) => handleChange("content", value || "")}
             theme="vs-dark"
+            options={{
+              scrollBeyondLastLine: false,
+              minimap: { enabled: false },
+            }}
           />
         </div>
 
@@ -129,7 +133,7 @@ const SnippetForm = ({
                       onClick={() => handleRemoveTag(tag)}
                       className="remove-tag"
                     >
-                      O
+                      <IconSelector iconType={4} />
                     </button>
                   </div>
                 ))}
@@ -150,9 +154,9 @@ const SnippetForm = ({
 
         <div className="submit-button">
           <button type="submit">{submitButtonText}</button>
+          <CustomButton label="Back" onClick={() => navigate("/library")} />
         </div>
       </form>
-      <CustomButton label="Back" onClick={() => navigate("/library")} />
     </div>
   );
 };
