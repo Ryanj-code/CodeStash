@@ -1,0 +1,73 @@
+.home-container {
+  animation: fadeIn 0.5s ease-in;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 80vh;
+}
+
+.hero-section {
+  margin-top: 20vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero-subtitle {
+  padding-bottom: 1rem;
+}
+
+.hero-section button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--button-color-2);
+  color: white;
+}
+
+.hero-section button:hover {
+  background-color: var(--button-hover-color-2);
+}
+
+.scroll-down {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  margin-top: 25vh;
+  animation: bounce 2s infinite;
+  cursor: pointer;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 40vh;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers items vertically */
+  align-items: center; /* Centers items horizontally */
+  padding: 2rem;
+  width: 80%;
+  text-align: center;
+  border: 0.1rem solid;
+  border-color: rgba(0, 0, 0, 0.1); /* Use rgba for opacity */
+  border-radius: 0.5rem;
+}
+
+.feature-list h3,
+p {
+  margin: 0.1rem;
+}

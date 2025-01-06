@@ -1,0 +1,214 @@
+.library-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.library-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-bar {
+  display: flex; /* Aligns items horizontally */
+  align-items: center; /* Vertically centers items */
+  background-color: var(--container-color); /* Light gray background */
+  border-radius: 1rem; /* Rounded corners */
+  padding: 0.25rem; /* Space inside the container */
+  width: 20vw; /* Adjust width as needed */
+  gap: 0.5rem; /* Adds spacing between elements */
+  width: 75%; /* Ensure it's responsive */
+  border: solid 0.01rem;
+  border-color: rgba(0, 0, 0, 0.2); /* Black border with transparency */
+}
+
+.search-bar input {
+  border: none; /* Removes default border */
+  outline: none; /* Removes outline on focus */
+  font-size: 1rem; /* Adjust font size */
+  flex: 1; /* Makes input take up the remaining space */
+  background: transparent; /* Matches the background */
+}
+
+.snippet-grid {
+  animation: fadeIn 0.5s ease-in;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(30rem, 1fr)
+  ); /* Automatically adjusts column count */
+  gap: 1.5rem; /* Space between grid items */
+  width: 100%; /* Allow the grid to span the full container width */
+  max-width: 100rem; /* Optional: Limit the max width for better visuals */
+  margin: 2rem; /* Center the grid within the container */
+  padding: 0.5rem;
+  box-sizing: border-box; /* Ensure padding doesn't break the grid layout */
+  justify-items: center; /* Ensures the grid items are centered within their columns */
+}
+
+.snippet-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  width: 25vw; /* Set a fixed width for the cards */
+  height: 40vh; /* Set a fixed height for the cards */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.snippet-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.snippet-card-header-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+.snippet-card-link {
+  display: inline-block;
+  font-size: 1rem; /* Change this value as needed */
+  cursor: pointer;
+  color: inherit; /* Keep the color consistent with the rest of the text */
+}
+
+.snippet-card-link:hover {
+  color: var(--button-hover-color-2);
+}
+
+.snippet-card-title {
+  display: inline;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.language {
+  font-size: 1rem;
+  text-align: center;
+  padding-left: 0.25rem;
+}
+
+.tags {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.snippet-preview {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.snippet-card button {
+  margin: 0.5rem;
+  padding: 0.25rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--button-color-2);
+  color: white;
+}
+
+.snippet-card button:hover {
+  background-color: var(--button-hover-color-2);
+}
+
+.delete-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.delete-modal-content {
+  background: var(--background-color);
+  color: var(--text-color-2);
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  width: 20rem;
+}
+
+.delete-modal button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.filter-modal {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.filters {
+  display: flex;
+  align-items: center; /* Vertically center */
+  justify-content: space-evenly; /* Horizontally center */
+  flex-direction: column;
+  background: var(--background-color);
+  color: var(--text-color-2);
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  height: 40%; /* Make height 100% of the parent */
+  width: 30%; /* Make width 100% of the parent */
+}
+
+.filter-options {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.filter-language,
+.filter-time {
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  height: 50vh; /* Optional, to take full viewport height */
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15rem;
+}

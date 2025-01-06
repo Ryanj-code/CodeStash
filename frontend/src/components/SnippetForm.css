@@ -1,0 +1,107 @@
+.snippet-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.snippet-form-container label {
+  display: block;
+  font-weight: bold;
+}
+
+.tag-container-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tag-container-2 input {
+  width: 100%;
+}
+
+.tags-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: var(--button-color);
+  color: white;
+  border-radius: 1rem;
+  gap: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  padding: 0;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.remove-tag:hover {
+  color: #ff6b6b;
+}
+
+.snippet-form-container [type="text"] {
+  text-indent: 0.25rem; /* Moves the first line of text to the right */
+  padding: 0.25rem;
+  border-radius: 2.5rem;
+  border: 0.05rem solid #ddd;
+  width: 100%;
+  font-size: 1rem; /* Font size in rem */
+}
+
+.language-container select {
+  width: 100%;
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+.editor-container {
+  border-radius: 0.5rem;
+}
+
+/* Flexbox container for the title and language */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+}
+
+.submit-button {
+  text-align: center; /* Horizontally centers the button */
+}
+
+.submit-button button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem; /* Ensure button text scales */
+  border: none;
+  border-radius: 0.5rem; /* Rounded corners */
+  background-color: var(--button-color);
+  color: white;
+  cursor: pointer;
+}
+
+.submit-button button:hover {
+  background-color: var(--button-hover-color); /* Darker blue on hover */
+}

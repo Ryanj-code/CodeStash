@@ -1,0 +1,42 @@
+.website-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+}
+
+.left-section {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem; /* Add spacing between the buttons */
+}
+
+.right-section button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--button-color-2);
+  color: white;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.button-container button {
+  font-size: 0.9rem;
+}
+
+.right-section button:hover {
+  background-color: var(--button-hover-color-2);
+}
