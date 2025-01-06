@@ -1,5 +1,9 @@
 .form-bg {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3e2c8 100%);
+  background: linear-gradient(
+    135deg,
+    var(--gradient-color) 0%,
+    var(--button-color-2) 100%
+  );
   min-height: 100vh;
   margin: 0;
   display: flex;
@@ -11,7 +15,7 @@
 }
 
 .wrapper {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--background-color-default);
   border-radius: 20px;
   padding: 2.5rem 2rem;
   width: 100%;
@@ -25,6 +29,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 
 .wrapper form {
@@ -38,16 +43,18 @@
 .wrapper input {
   font-size: 1rem;
   border-radius: 12px;
-  border: 2px solid #e2e8f0;
+  border: none;
   padding: 0.8rem 1rem;
   width: 100%;
+  background-color: var(--background-color-2);
+  color: var(--text-color-default);
   box-sizing: border-box;
   transition: border-color 0.2s ease;
   outline: none;
 }
 
 .wrapper input:focus {
-  border-color: #3b82f6;
+  border-color: var(--button-color);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
@@ -58,15 +65,15 @@
   border-radius: 12px;
   border: none;
   padding: 0.8rem 1rem;
-  background-color: #3b82f6;
-  color: white;
+  background-color: var(--button-color-2);
+  color: var(--text-color-default);
   width: 100%;
   transition: all 0.2s ease;
   margin-top: 0.5rem;
 }
 
 .wrapper button:hover {
-  background-color: #2563eb;
+  background-color: var(--button-hover-color-2);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
@@ -82,7 +89,7 @@
   align-items: center;
   margin-top: 1.5rem;
   font-size: 0.95rem;
-  color: #64748b;
+  color: var(--text-color-2);
 }
 
 .alt-option a {

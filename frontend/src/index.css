@@ -2,11 +2,12 @@
 :root {
   /* Background Colors */
   --background-color-default: white;
-  --background-color: #cdcdcd;
-  --background-color-2: #c0c0c0;
+  --background-color: #eaeaea;
+  --background-color-2: #dfdfdf;
   --container-color: white;
   --container-color-2: rgb(243, 243, 243);
   --border-color: #333;
+  --gradient-color: white;
 
   /* Text Colors */
   --header-text-color: #333333;
@@ -19,17 +20,17 @@
   --button-hover-color: #0056b3;
   --button-color-2: #28a745;
   --button-hover-color-2: #218838;
-
-  /* --button-delete-background-color: #dc3545;
-  --button-delete-hover-background-color: #c82333; */
 }
 
 /* Dark Theme Overrides */
 body.dark-theme {
+  --background-color-default: rgb(99, 99, 99);
   --background-color: #333;
-  --background-color-2: #222;
-  --container-color: #1e1e1e;
+  --background-color-2: #ffffff;
+  --container-color: #343434;
+  --container-color-2: #252525;
   --border-color: #bebebe;
+  --gradient-color: rgb(103, 103, 103);
 
   --header-text-color: #e0e0e0; /* Light text color for dark background */
   --text-color: #e0e0e0; /* Light text color for dark background */
@@ -39,21 +40,6 @@ body.dark-theme {
   --button-hover-color: #336699; /* Brighter dark blue color for button background */
   --button-color-2: #03dac6;
   --button-hover-color-2: #018786;
-
-  /* --button-delete-color: #cf6679;
-  --button-delete-hover-color: #b00020; */
-
-  /* Dark Overlay for Login/Signup Background */
-  .form-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Opacity to darken */
-    z-index: 0;
-  }
 }
 
 @keyframes fadeIn {

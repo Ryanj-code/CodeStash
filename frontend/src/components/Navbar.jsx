@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import icon from "/icon.png";
+import DarkModeButton from "../components/DarkModeButton";
 import axios from "axios";
 import "./Navbar.css";
 
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
+  const [darkTheme, setDarkTheme] = useState(true);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -19,6 +21,12 @@ const Navbar = () => {
     }
   };
 
+  const toggleTheme = () => {
+    setDarkTheme(!darkTheme);
+    // You can also save the theme preference in localStorage for persistence
+    document.body.classList.toggle("dark-theme", darkTheme);
+  };
+
   return (
     <div className="navbar">
       <div className="left-section" onClick={() => navigate("/")}>
@@ -28,6 +36,7 @@ const Navbar = () => {
         <div>CodeStash</div>
       </div>
       <div className="right-section">
+        <DarkModeButton toggleTheme={toggleTheme} />
         {user ? (
           <button onClick={handleLogout}>Log Out</button>
         ) : (

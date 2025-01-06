@@ -71,3 +71,8 @@
 p {
   margin: 0.1rem;
 }
+
+.feature-list .size-6 {
+  width: 5vw;
+  height: 5vh;
+}
