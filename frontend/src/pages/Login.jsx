@@ -24,8 +24,8 @@ const Login = () => {
   return (
     <div className="form-bg">
       <div className="wrapper">
-        <h2>Login</h2>
         <AuthForm
+          formTitle={"Login"}
           user={user}
           handleSubmit={handleLogin}
           buttonText="Login"

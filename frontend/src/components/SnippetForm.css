@@ -53,12 +53,12 @@
 }
 
 .snippet-form-container [type="text"] {
-  text-indent: 0.25rem; /* Moves the first line of text to the right */
+  text-indent: 0.25rem;
   padding: 0.25rem;
   border-radius: 2.5rem;
   border: 0.05rem solid #ddd;
   width: 100%;
-  font-size: 1rem; /* Font size in rem */
+  font-size: 1rem;
 }
 
 .language-container select {
@@ -88,15 +88,15 @@
 }
 
 .submit-button {
-  text-align: center; /* Horizontally centers the button */
+  text-align: center;
 }
 
 .submit-button button {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  font-size: 1rem; /* Ensure button text scales */
+  font-size: 1rem;
   border: none;
-  border-radius: 0.5rem; /* Rounded corners */
+  border-radius: 0.5rem;
   background-color: var(--button-color);
   color: white;
   cursor: pointer;

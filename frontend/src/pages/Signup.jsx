@@ -26,8 +26,8 @@ const Signup = () => {
   return (
     <div className="form-bg">
       <div className="wrapper">
-        <p>Sign Up</p>
         <AuthForm
+          formTitle={"Sign Up"}
           user={user}
           isSignup={true}
           handleSubmit={handleSignup}

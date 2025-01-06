@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AuthForm = ({ user, isSignup, handleSubmit, buttonText }) => {
+const AuthForm = ({ formTitle, user, isSignup, handleSubmit, buttonText }) => {
   const [data, setData] = useState({
     username: "",
     email: "",
@@ -26,6 +26,7 @@ const AuthForm = ({ user, isSignup, handleSubmit, buttonText }) => {
 
   return (
     <form onSubmit={(ev) => handleSubmit(ev, data)}>
+      <h3>{formTitle}</h3>
       {isSignup && (
         <input
           type="text"

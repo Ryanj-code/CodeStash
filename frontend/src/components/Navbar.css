@@ -22,6 +22,13 @@
   gap: 0.5rem; /* Add spacing between the buttons */
 }
 
+.right-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .right-section button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
