@@ -11,19 +11,21 @@
   font-weight: bold;
 }
 
-.tag-container-2 {
+.tags-display-container {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.tag-container-2 input {
-  width: 100%;
+  flex-direction: row;
 }
 
 .tags-display {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.25rem;
+}
+
+.tags-input-container {
+  display: flex;
+  flex-direction: row;
   gap: 0.5rem;
 }
 
@@ -31,6 +33,7 @@
   background-color: var(--button-color);
   color: white;
   border-radius: 1rem;
+  margin-top: 0.25rem;
   gap: 0.25rem;
   display: flex;
   justify-content: center;
@@ -69,6 +72,10 @@
 
 .editor-container {
   border-radius: 0.5rem;
+}
+
+.notes-container input {
+  margin-left: -0.5rem; /* Adjust this value to move it further to the left */
 }
 
 /* Flexbox container for the title and language */

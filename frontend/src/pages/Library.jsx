@@ -36,11 +36,12 @@ const Library = () => {
   useEffect(() => {
     if (user && user.id) {
       fetchSnippets(user.id);
+    } else {
+      navigate("/");
     }
   }, [user]);
 
   const fetchSnippets = async () => {
-    //console.log(user.id);
     try {
       const res = await axios.get(`/get-library/${user.id}`);
       setAllSnippets(res.data.snippets); // Saves 2 copies of all snippets
@@ -73,20 +74,13 @@ const Library = () => {
       );
     }
 
-    // Apply sorting filter if possible
-    if (selectedSort === "Newest") {
-      filteredSnippets = filteredSnippets.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-      );
-      // Newer dates are larger, so snippets with more recent (larger) createdAt values (b)
-      // will be placed before those with older (smaller) createdAt values (a)
-    } else if (selectedSort === "Oldest") {
-      filteredSnippets = filteredSnippets.sort(
-        (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-      );
-      // Older dates are smaller, so snippets with older (smaller) createdAt values (a)
-      // will be placed before those with more recent (larger) createdAt values (b)
-    }
+    // Apply sorting filter
+    filteredSnippets = filteredSnippets.slice().sort(
+      (a, b) =>
+        selectedSort === "Newest"
+          ? new Date(b.createdAt) - new Date(a.createdAt) // Newest First
+          : new Date(a.createdAt) - new Date(b.createdAt) // Oldest First
+    );
 
     setSnippets(filteredSnippets); // Update the state with the filtered and/or sorted snippets
   }, [searchQuery, selectedLanguage, selectedSort]);
@@ -241,16 +235,14 @@ const Library = () => {
                       Tags: {snippet.tags.map((tag) => `#${tag}`).join(", ")}
                     </span>
                   </div>
-                  <div className="snippet-preview">
-                    <SnippetPreview content={snippet.content} />
-                    <div>
-                      <button onClick={() => handleEditSnippet(snippet._id)}>
-                        Edit
-                      </button>
-                      <button onClick={() => handleDeleteClick(snippet._id)}>
-                        Delete
-                      </button>
-                    </div>
+                  <SnippetPreview content={snippet.content} />
+                  <div className="snippet-buttons">
+                    <button onClick={() => handleEditSnippet(snippet._id)}>
+                      Edit
+                    </button>
+                    <button onClick={() => handleDeleteClick(snippet._id)}>
+                      Delete
+                    </button>
                   </div>
                 </div>
               ))

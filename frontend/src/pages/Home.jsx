@@ -23,7 +23,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="home-wrapper">
       <Navbar />
       <div className="home-container">
         <div className="hero-section">
