@@ -50,12 +50,14 @@
 
 .snippet-card {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  text-align: center;
   background-color: var(--background-color);
   padding: 0.5rem;
   border-radius: 2rem;
+  gap: 2rem;
   width: 25vw; /* Set a fixed width for the cards */
   height: 40vh; /* Set a fixed height for the cards */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -107,14 +109,9 @@
   margin-top: 0.5rem;
 }
 
-.snippet-preview {
-  white-space: pre-wrap;
-  word-wrap: break-word;
+.snippet-card button {
   text-align: center;
   padding: 0.5rem;
-}
-
-.snippet-card button {
   margin: 0.5rem;
   padding: 0.25rem 1rem;
   font-size: 0.85rem;

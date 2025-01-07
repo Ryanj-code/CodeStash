@@ -35,16 +35,19 @@ const SnippetForm = ({
   };
 
   const handleTagInput = (ev) => {
-    // Allow the user to add tag by pressing enter or typing a comma
-    if (ev.key === "Enter" || ev.key === ",") {
-      ev.preventDefault(); // Prevent form submit on enter
-      if (tagInput.trim() && !snippetData.tags.includes(tagInput.trim())) {
-        setSnippetData((prevData) => ({
-          ...prevData,
-          tags: [...prevData.tags, tagInput.trim()],
-        })); // Holds previous tags in prevTags and appends new one
-        setTagInput("");
-      }
+    if (ev.key === "Enter") {
+      ev.preventDefault(); // Prevent the form from being submitted
+      handleAddTag(); // Call the function to add a tag when Enter is pressed
+    }
+  };
+
+  const handleAddTag = () => {
+    if (tagInput.trim() && !snippetData.tags.includes(tagInput.trim())) {
+      setSnippetData((prevData) => ({
+        ...prevData,
+        tags: [...prevData.tags, tagInput.trim()],
+      }));
+      setTagInput("");
     }
   };
 
@@ -69,11 +72,10 @@ const SnippetForm = ({
             <label htmlFor="title">Snippet Title:</label>
             <input
               type="text"
-              id="title"
+              id="tags"
               value={snippetData.title}
-              placeholder="Enter Title"
-              onChange={(e) => handleChange("title", e.target.value)}
-              required
+              onChange={(e) => setTagInput(e.target.value)}
+              placeholder="Enter tags"
             />
           </div>
           <div className="language-container form-group">
@@ -115,15 +117,18 @@ const SnippetForm = ({
         <div className="form-row">
           <div className="tag-container form-group">
             <label htmlFor="tags">Tags:</label>
-            <div className="tag-container-2">
-              <input
-                type="text"
-                id="tags"
-                value={tagInput}
-                onChange={(e) => setTagInput(e.target.value)}
-                onKeyDown={handleTagInput}
-                placeholder="Enter tags"
-              />
+            <div>
+              <div className="tags-input-container">
+                <input
+                  type="text"
+                  id="tags"
+                  value={tagInput}
+                  onChange={(e) => setTagInput(e.target.value)}
+                  onKeyDown={handleTagInput}
+                  placeholder="Enter tags"
+                />
+                <IconSelector iconType={7} onClick={handleAddTag} />
+              </div>
               <div className="tags-display">
                 {snippetData.tags.map((tag, index) => (
                   <div key={index} className="tag">

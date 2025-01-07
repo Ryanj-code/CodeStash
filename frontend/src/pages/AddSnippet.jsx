@@ -9,6 +9,10 @@ const AddSnippet = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
+  if (!user) {
+    navigate("/");
+  }
+
   const handleAddSnippet = async (snippetData) => {
     try {
       const data = {

@@ -3,6 +3,12 @@
   height: auto;
 }
 
-.filter-icon {
+.filter-icon,
+.add-icon {
   cursor: pointer;
+}
+
+.filter-icon:hover,
+.add-icon:hover {
+  color: var(--background-color-2);
 }
