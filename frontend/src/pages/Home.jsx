@@ -41,13 +41,13 @@ const Home = () => {
         </div>
 
         <div className="scroll-down">
-          <IconSelector iconType={6} onClick={scrollDown} color="#22c55e" />
+          <IconSelector iconType={6} onClick={scrollDown} />
         </div>
 
         <div className="features" id="features">
           <h2>Everything You Need to Manage Your Code Snippets</h2>
           <div className="feature-list">
-            <IconSelector iconType={3} color="#22c55e" />
+            <IconSelector iconType={3} />
             <h3>Simple to Use</h3>
             <p>
               Intuitive interface for adding and editing snippets. Syntax
@@ -55,13 +55,13 @@ const Home = () => {
             </p>
           </div>
           <div className="feature-list">
-            <IconSelector iconType={1} color="#22c55e" />
+            <IconSelector iconType={1} />
             <h3>Filtering</h3>
             Find your code snippets instantly with powerful search and filters.
             Tag system for easy organization and retrieval.
           </div>
           <div className="feature-list">
-            <IconSelector iconType={5} color="#22c55e" />
+            <IconSelector iconType={5} />
             <h3>Detailed View</h3>
             Add notes, descriptions, and usage examples to your snippets.
           </div>

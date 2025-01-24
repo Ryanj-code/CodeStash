@@ -159,9 +159,9 @@ const SnippetForm = ({
 
         <div className="submit-button">
           <button type="submit">{submitButtonText}</button>
-          <CustomButton label="Back" onClick={() => navigate("/library")} />
         </div>
       </form>
+      <CustomButton label="Back" onClick={() => navigate("/library")} />
     </div>
   );
 };

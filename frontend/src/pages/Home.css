@@ -1,4 +1,10 @@
 .home-container {
+  /*background: url("../assets/bg-image.png");*/
+  background: linear-gradient(
+    45deg,
+    var(--gradient-color) 0%,
+    var(--button-color) 100%
+  );
   animation: fadeIn 0.5s ease-in;
   display: flex;
   flex-direction: column;
@@ -73,4 +79,8 @@ p {
 .feature-list .size-6 {
   width: 5vw;
   height: 5vh;
+}
+
+.size-6 {
+  color: var(--button-color-2);
 }
