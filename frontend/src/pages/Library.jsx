@@ -36,8 +36,6 @@ const Library = () => {
   useEffect(() => {
     if (user && user.id) {
       fetchSnippets(user.id);
-    } else {
-      navigate("/");
     }
   }, [user]);
 

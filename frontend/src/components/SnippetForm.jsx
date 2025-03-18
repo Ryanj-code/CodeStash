@@ -72,10 +72,10 @@ const SnippetForm = ({
             <label htmlFor="title">Snippet Title:</label>
             <input
               type="text"
-              id="tags"
+              id="title"
               value={snippetData.title}
-              onChange={(e) => setTagInput(e.target.value)}
-              placeholder="Enter tags"
+              onChange={(e) => handleChange("title", e.target.value)}
+              placeholder="Enter title"
             />
           </div>
           <div className="language-container form-group">
@@ -159,9 +159,9 @@ const SnippetForm = ({
 
         <div className="submit-button">
           <button type="submit">{submitButtonText}</button>
-          <CustomButton label="Back" onClick={() => navigate("/library")} />
         </div>
       </form>
+      <CustomButton label="Back" onClick={() => navigate("/library")} />
     </div>
   );
 };

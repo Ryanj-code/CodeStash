@@ -4,11 +4,14 @@
 }
 
 .filter-icon,
-.add-icon {
+.add-icon,
+.download-file {
   cursor: pointer;
+  color: var(--header-text-color-2);
 }
 
 .filter-icon:hover,
-.add-icon:hover {
-  color: var(--background-color-2);
+.add-icon:hover,
+.download-file:hover {
+  color: var(--header-text-color);
 }

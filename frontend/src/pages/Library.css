@@ -1,4 +1,5 @@
 .library-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,6 +25,11 @@
   border-color: rgba(0, 0, 0, 0.2); /* Black border with transparency */
 }
 
+.search-bar:focus-within {
+  border-color: var(--button-color-2);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
 .search-bar input {
   border: none; /* Removes default border */
   outline: none; /* Removes outline on focus */
@@ -35,32 +41,36 @@
 .snippet-grid {
   animation: fadeIn 0.5s ease-in;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(30rem, 1fr)
-  ); /* Automatically adjusts column count */
-  gap: 1.5rem; /* Space between grid items */
-  width: 100%; /* Allow the grid to span the full container width */
-  max-width: 100rem; /* Optional: Limit the max width for better visuals */
-  margin: 2rem; /* Center the grid within the container */
-  padding: 0.5rem;
-  box-sizing: border-box; /* Ensure padding doesn't break the grid layout */
-  justify-items: center; /* Ensures the grid items are centered within their columns */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 100rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .snippet-card {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  background-color: var(--background-color);
-  padding: 0.5rem;
-  border-radius: 2rem;
-  gap: 2rem;
-  width: 25vw; /* Set a fixed width for the cards */
-  height: 40vh; /* Set a fixed height for the cards */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--container-color);
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  gap: 1.5rem;
+  width: 100%;
+  height: 350px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.snippet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .snippet-card-header {
@@ -68,7 +78,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .snippet-card-header-2 {
@@ -76,25 +87,31 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .snippet-card-link {
   display: inline-block;
-  font-size: 1rem; /* Change this value as needed */
+  font-size: 1rem;
   cursor: pointer;
-  color: inherit; /* Keep the color consistent with the rest of the text */
+  color: var(--button-color);
+  transition: color 0.2s ease;
+  text-decoration: none;
 }
 
 .snippet-card-link:hover {
-  color: var(--button-hover-color-2);
+  color: var(--button-hover-color);
+  text-decoration: underline;
 }
 
 .snippet-card-title {
   display: inline;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
+  color: var(--header-text-color);
+  margin: 0;
 }
 
 .language {
@@ -207,7 +224,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 15rem;
 }
 
 @media (max-width: 480px) {

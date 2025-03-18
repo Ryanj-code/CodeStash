@@ -2,18 +2,18 @@
 :root {
   /* Background Colors */
   --background-color-default: white;
-  --background-color: #eaeaea;
-  --background-color-2: #dfdfdf;
+  --background-color: #f5f5f5;
+  --background-color-2: #eaeaea;
   --container-color: white;
-  --container-color-2: rgb(243, 243, 243);
-  --border-color: #333;
+  --container-color-2: rgb(248, 248, 248);
+  --border-color: #e0e0e0;
   --gradient-color: white;
 
   /* Text Colors */
   --header-text-color: #333333;
   --text-color-default: white;
-  --text-color: #616161;
-  --text-color-2: black;
+  --text-color: #666666;
+  --text-color-2: #333333;
 
   /* Button Colors */
   --button-color: #007bff;
@@ -24,20 +24,18 @@
 
 /* Dark Theme Overrides */
 body.dark-theme {
-  --background-color-default: rgb(99, 99, 99);
-  --background-color: #333;
-  --background-color-2: #ffffff;
-  --container-color: #343434;
+  --background-color-default: #121212;
+  --background-color: #1e1e1e;
+  --background-color-2: #252525;
+  --container-color: #2d2d2d;
   --container-color-2: #252525;
-  --border-color: #bebebe;
-  --gradient-color: rgb(103, 103, 103);
-
-  --header-text-color: #e0e0e0; /* Light text color for dark background */
-  --text-color: #e0e0e0; /* Light text color for dark background */
-  --text-color-2: white;
-
-  --button-color: #66a3cc; /* Brighter dark blue color for text */
-  --button-hover-color: #336699; /* Brighter dark blue color for button background */
+  --border-color: #444444;
+  --gradient-color: #333333;
+  --header-text-color: #f5f5f5;
+  --text-color: #cccccc;
+  --text-color-2: #f5f5f5;
+  --button-color: #66a3cc;
+  --button-hover-color: #5590b8;
   --button-color-2: #03dac6;
   --button-hover-color-2: #018786;
 }
@@ -45,9 +43,11 @@ body.dark-theme {
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -64,5 +64,24 @@ body.dark-theme {
   }
   60% {
     transform: translateY(-5px);
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .feature-list {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .hero-section button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .feature-list {
+    width: 85%;
   }
 }
