@@ -3,7 +3,13 @@
 }
 
 body {
-  background-color: var(--background-color-default);
+  background-color: var(--gradient-color);
+  background-image: radial-gradient(
+    var(--button-color) 1px,
+    var(--gradient-color) 1px
+  );
+  background-size: 50px 50px; /* Adjust the spacing of the dots */
+
   color: var(--text-color-2);
   margin: 0;
   padding: 0;

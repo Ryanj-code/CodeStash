@@ -1,9 +1,4 @@
 .form-bg {
-  background: linear-gradient(
-    135deg,
-    var(--gradient-color) 0%,
-    var(--button-color-2) 100%
-  );
   min-height: 100vh;
   margin: 0;
   display: flex;
